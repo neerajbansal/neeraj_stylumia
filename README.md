@@ -1,7 +1,7 @@
 # neeraj_stylumia
 
 ## Stack- **Flask (Python), Sqlite, VanillaJs**
-To Run First Time, run commands as:
+Set up this repo for first time, run commands as:
 
     pip install -Ur requirements.
 
@@ -9,7 +9,7 @@ To Run First Time, run commands as:
 
     python app.py
     
-To Refresh database with dummy data
+To refresh database with dummy data
     
     make clean_database 
 
