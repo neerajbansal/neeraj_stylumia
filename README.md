@@ -8,6 +8,10 @@ To Run First Time, run commands as:
     make clean_database
 
     python app.py
+    
+To Refresh database with dummy data
+    
+    make clean_database 
 
 App tested with python 2.7.12 version
 
