@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/stylumia.css">
+    <script type="text/javascript" src="assets/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="assets/common.js"></script>
+    <script type="text/javascript" src="assets/users.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12 border-bottom">
+                <p>
+                    <h3 class="text-center">
+                        Neeraj Stylumia
+                    </h3>
+                </p>
+            </div>
+
+            <div id="nameSpan" class="col-md-12 text-right">
+                <span>
+
+                </span>
+                <button type="button" class="btn btn-link" id="logoutButton" onclick="clearLocalStorage()">
+                    Logout
+                </button>
+            </div>
+        </div>
+        <div class="row" id="userListTable">
+        </div>
+        <div id="loader"></div>
+    </div>
+</body>
+
+</html>
