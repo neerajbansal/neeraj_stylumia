@@ -30,22 +30,52 @@ if (isLoggedIn()) {
 
     var deleteUser = function (id) {
         var url = 'api/user/' + id;
+        showLoader();
         ajaxWrapper('DELETE', url, null, function (err, data) {
+            hideLoader();
             if (err) {
-                alert('Error', err);
+                alert('Error', err.message);
             }
             else {
                 alert(data.message);
                 users = users.filter((user) => { return user.id != id });
-                console.log(users)
                 renderUserTable(users, roles);
             }
         })
     }
 
-    var updateUser = function(id){
-        console.log(id)
-        console.log($('#updateName').val())
+    var updateUser = function (id) {
+        var dataToSend = {};
+        var name = $('#updateName').val();
+        var role = $('#updateRole').val();
+        var bio = $('#updateBio').val();
+        var address = $('#updateAddress').val();
+        var email = $('#updateEmail').val();
+        dataToSend["id"] = id;
+        dataToSend["name"] = name;
+        dataToSend["role_id"] = Number(role);
+        dataToSend["bio"] = bio;
+        dataToSend["address"] = address;
+        dataToSend["email"] = email;
+
+        showLoader();
+        ajaxWrapper('POST', 'api/user/update', dataToSend, function (err, data) {
+            hideLoader();
+            if (err) {
+                alert('Error', err.message);
+            }
+            else {
+                alert(data.message);
+                var userLen = users.length;
+                for (var i = 0; i < userLen; i++) {
+                    if (users[i].id == id) {
+                        users[i] = dataToSend;
+                    }
+                }
+                renderUserTable(users, roles);
+            }
+        })
+
     }
 
     var editUser = function (id) {
@@ -59,14 +89,14 @@ if (isLoggedIn()) {
         var cards = '';
         cards += '<div class="card-body">';
         cards += '<input id="updateName" placeholder="Name" type="text" class="form-control" value="' + userToEdit['name'] + '"></input>';
-        cards += '<select class="form-control">';
+        cards += '<select id="updateRole" class="form-control">';
         for (var role in roles) {
             cards += ' <option value="' + roles[role]['id'] + '">' + roles[role]['role'] + '</option>';
         }
         cards += '</select>';
-        cards += '<input placeholder="Brief Bio" type="text" class="form-control" value="' + userToEdit['bio'] + '"></input>';
-        cards += '<input placeholder="Address" type="text" class="form-control" value="' + userToEdit['address'] + '"></input>';
-        cards += '<input placeholder="Email" type="text" class="form-control" value="' + userToEdit['email'] + '"></input>';
+        cards += '<input id="updateBio" placeholder="Brief Bio" type="text" class="form-control" value="' + userToEdit['bio'] + '"></input>';
+        cards += '<input id="updateAddress" placeholder="Address" type="text" class="form-control" value="' + userToEdit['address'] + '"></input>';
+        cards += '<input id="updateEmail" placeholder="Email" type="text" class="form-control" value="' + userToEdit['email'] + '"></input>';
         cards += '<button type="button" onclick="updateUser(' + id + ')" class="btn btn-link">Save</button>';
         cards += '<button type="button" onclick="onEditCancel(' + id + ')" class="btn btn-link">Cancel</button>';
         cards += '</div>';
@@ -101,7 +131,6 @@ if (isLoggedIn()) {
 
 
     function renderUserTable(usersObj, roleObj) {
-        console.log(usersObj, roleObj)
         $('#userListTable').empty();
 
         var cards = '';

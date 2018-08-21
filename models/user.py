@@ -51,13 +51,13 @@ class UserModel:
         connection.close()
 
     @classmethod
-    def update_user_into_table(cls, id, role_id, name, address, email, bio, password, db_path='./db/datashop.db'):
+    def update_user_into_table(cls, id, role_id, name, address, email, bio, db_path='./db/datashop.db'):
         connection = sqlite3.connect(db_path)
         cursor = connection.cursor()
         
-        query = 'UPDATE user SET role_id = ?, name = ?, address = ?, email = ?, bio = ?, password = ? WHERE id = ?'
+        query = 'UPDATE user SET role_id = ?, name = ?, address = ?, email = ?, bio = ? WHERE id = ?'
         cursor.execute(query, (role_id, name, address,
-                               email, bio, password, id))
+                               email, bio, id))
         connection.commit()
         connection.close()
 
@@ -97,6 +97,4 @@ class UserModel:
                 "name": self.name,
                 "address": self.address,
                 "email": self.email,
-                "bio": self.bio,
-                "username": self.username,
-                "password": self.password}
+                "bio": self.bio}

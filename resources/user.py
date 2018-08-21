@@ -52,11 +52,11 @@ class UserRegister(Resource):
         parser.add_argument('address',
                             type=str,
                             help='Address')
-        
+
         parser.add_argument('email',
                             type=str,
                             help='Email')
-        
+
         parser.add_argument('bio',
                             type=str,
                             help='bio')
@@ -116,19 +116,19 @@ class UserUpdate(Resource):
         parser.add_argument('address',
                             type=str,
                             help='Address')
-        
+
         parser.add_argument('email',
                             type=str,
                             help='Email')
-        
+
         parser.add_argument('bio',
                             type=str,
                             help='bio')
 
-        parser.add_argument('password',
-                            type=str,
-                            required=True,
-                            help='Password is required!')
+        # parser.add_argument('password',
+        #                     type=str,
+        #                     required=True,
+        #                     help='Password is required!')
 
         data_payload = parser.parse_args()
 
@@ -140,19 +140,16 @@ class UserUpdate(Resource):
 
             if(data_payload["role_id"] < current_identity.role_id or data_payload["id"] == current_identity.id):
                 if(data_payload["id"] == current_identity.id and data_payload["role_id"] >= current_identity.role_id):
-                    return {'message': 'You can not update your role'}, 401                    
-                else:  
+                    return {'message': 'You can not update your role'}, 401
+                else:
                     UserModel.update_user_into_table(data_payload["id"],
-                                                    data_payload["role_id"],
-                                                    data_payload["name"],
-                                                    address,
-                                                    email,
-                                                    bio,
-                                                    data_payload["password"])
+                                                     data_payload["role_id"],
+                                                     data_payload["name"],
+                                                     address,
+                                                     email,
+                                                     bio)
                     return {'message': 'User successfully updated!'}, 202
             else:
-                return {'message': 'You do not have permission to update this user'}, 400
+                return {'message': 'You do not have permission to update user to this role'}, 400
         else:
             return {'message': 'No such user exist'}, 400
-
-           
