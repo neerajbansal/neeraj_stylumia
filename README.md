@@ -3,7 +3,7 @@
 ## Stack- **Flask (Python), Sqlite, VanillaJs**
 Set up this repo for first time, run commands as:
 
-    pip install -Ur requirements.
+    pip install -Ur requirements.txt
 
     make clean_database
 
