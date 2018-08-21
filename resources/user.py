@@ -139,7 +139,7 @@ class UserUpdate(Resource):
             bio = data_payload.get('bio', None)
 
             if(data_payload["role_id"] < current_identity.role_id or data_payload["id"] == current_identity.id):
-                if(data_payload["id"] == current_identity.id and data_payload["role_id"] >= current_identity.role_id):
+                if(data_payload["id"] == current_identity.id and data_payload["role_id"] > current_identity.role_id):
                     return {'message': 'You can not update your role'}, 401
                 else:
                     UserModel.update_user_into_table(data_payload["id"],

@@ -1,4 +1,4 @@
-make deps:
+make dependencies:
 	pip install -Ur requirements.
 
 make clean_database:

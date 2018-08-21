@@ -34,7 +34,7 @@ if (isLoggedIn()) {
         ajaxWrapper('DELETE', url, null, function (err, data) {
             hideLoader();
             if (err) {
-                alert('Error', err.message);
+                alert(err.responseJSON.message);
             }
             else {
                 alert(data.message);
@@ -62,7 +62,7 @@ if (isLoggedIn()) {
         ajaxWrapper('POST', 'api/user/update', dataToSend, function (err, data) {
             hideLoader();
             if (err) {
-                alert('Error', err.message);
+                alert(err.responseJSON.message);
             }
             else {
                 alert(data.message);

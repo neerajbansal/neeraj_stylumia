@@ -27,7 +27,7 @@ def create_database(db_path):
 
     cursor.execute('INSERT OR REPLACE INTO user VALUES(1, 1,"Neeraj Bansal", "Chandigarh Area", "bansal.neeraj94@gmail.com", "Full Stack Developer, AI is love", "neeraj_bansal", "demo");')
 
-    cursor.execute('INSERT OR REPLACE INTO user VALUES(2, 1,"ShivamK", "Chennai Area", "shivam.k@gmail.com", "Python Developer, software achitect", "shivam_k", "demo");')
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(2, 1,"Shivam Kumar", "Chennai Area", "shivam.k@gmail.com", "Python Developer, software achitect", "shivam_k", "demo");')
 
     cursor.execute('INSERT OR REPLACE INTO user VALUES(3, 1,"Rajanam", "Madras Area", "Rajanam@gmail.com", "JS Developer", "rajanam", "demo");')
 
@@ -35,7 +35,11 @@ def create_database(db_path):
 
     cursor.execute('INSERT OR REPLACE INTO user VALUES(5, 2,"Mahesh Babu", "Bengaluru Area", "mahesh.babu@gmail.com", "Software Product Manager", "mahesh_babu", "demo");')
 
-    cursor.execute('INSERT OR REPLACE INTO user VALUES(6, 3,"Sri Ramanujam", "Bengaluru Area", "ramanujam@gmail.com", "CEO, Product Owner, Co-Founder", "ramanujam", "demo");')
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(6, 2,"Meenakshi Kamat", "Bengaluru Area", "meenakshi.kamat@gmail.com", "Sales Manager", "meenakshi", "demo");')
+
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(7, 3,"Sri Ramanujam", "Bengaluru Area", "ramanujam@gmail.com", "CEO, Product Owner, Co-Founder", "ramanujam", "demo");')
+
+    cursor.execute('INSERT OR REPLACE INTO user VALUES(8, 3,"Vallabh", "Bengaluru Area", "val.kumaramswami@gmail.com", "CTO, Co-Founder", "vallabh", "demo");')
 
     cursor.execute('INSERT OR REPLACE INTO role VALUES(1, "Officer");')
     cursor.execute('INSERT OR REPLACE INTO role VALUES(2, "Manager");')
