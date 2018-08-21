@@ -66,6 +66,9 @@ if (isLoggedIn()) {
             }
             else {
                 alert(data.message);
+                window.localStorage.setItem('name', name)
+                window.localStorage.setItem('role_id', role)
+
                 var userLen = users.length;
                 for (var i = 0; i < userLen; i++) {
                     if (users[i].id == id) {
